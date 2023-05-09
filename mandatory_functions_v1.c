@@ -10,31 +10,35 @@
 void _push(stack_t **stack, unsigned int line_number)
 {
     stack_t *newNode = NULL;
-    
-    newNode = malloc(sizeof(stack_t));
-    if (!newNode)
+    char *token_number = NULL;
+
+    // ! Numero para agregar a la pila.
+    token_number = strtok(NULL, "\t\n$");
+    // ! No encontro un numero al lado del push.
+    if (!token_number)
     {
-        write(STDERR_FILENO, "Error: malloc failed\n", 21);
+        fprintf(stderr, "L%d usage: push integer\n", line_number);
+        free_list(*stack);
         exit(EXIT_FAILURE);
     }
-    if (!stack)
-    {
-        newNode->n = line_number;
-        newNode->prev = NULL;
-        newNode->next = NULL;
-        *stack = newNode;
-    }
-    else
-    {
-        newNode->n = line_number;
-        newNode->prev = NULL;
-        newNode->next = *stack;
-        if (*stack)
-        {
-            (*stack)->prev = newNode;
-        }
-        *stack = newNode;
-    }
+
+    newNode = malloc(sizeof(stack_t));
+	if (!newNode)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		free_list(*stack);
+		exit(EXIT_FAILURE);
+	}
+
+    // ! Conectamos el nuevo nodo al stack (head) este mismo se lo asignamos al newNode para que sea el primer elmento en la pila.
+    newNode->n = atoi(token_number);
+	newNode->next = *stack;
+	newNode->prev = NULL;
+	if (*stack)
+	{
+		(*stack)->prev = newNode;
+	}
+	(*stack) = newNode;
 }
 
 /**
