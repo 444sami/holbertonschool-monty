@@ -50,3 +50,18 @@ void free_list(stack_t *stack_to_free)
         free(temp);
     }
 }
+
+
+int _verifyNumber(char *number)
+{
+    int index = 0;
+
+    if (number)
+    {
+        if (number[index] > 48 || number[index] < 57)
+        {
+            return (0);
+        }
+    }
+    return (1);
+}

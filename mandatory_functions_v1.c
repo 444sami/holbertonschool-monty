@@ -15,7 +15,7 @@ void _push(stack_t **stack, unsigned int line_number)
     // ! Numero para agregar a la pila.
     token_number = strtok(NULL, "\t\n$");
     // ! No encontro un numero al lado del push.
-    if (!token_number)
+    if (!token_number || _verifyNumber(token_number) == 0)
     {
         fprintf(stderr, "L%d: usage: push integer\n", line_number);
         free_list(*stack);
