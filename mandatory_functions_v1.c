@@ -17,7 +17,7 @@ void _push(stack_t **stack, unsigned int line_number)
     // ! No encontro un numero al lado del push.
     if (!token_number)
     {
-        fprintf(stderr, "L%d usage: push integer\n", line_number);
+        fprintf(stderr, "L%d: usage: push integer\n", line_number);
         free_list(*stack);
         exit(EXIT_FAILURE);
     }
