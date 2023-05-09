@@ -4,10 +4,10 @@ int main(int argc, char *argv[])
 {
     char *current_opcode = NULL, *buffer_current_line = NULL;
     stack_t *stack = NULL;
-    void (*op_code_callback)(stack_t **stack, unsigned int line_numbers);
     FILE *file;
     ssize_t length = 0;
-    unsigned int line_numbers = 0;
+    unsigned int line_number = 0;
+    void (*op_code_callback)(stack_t **stack, unsigned int line_numbers);
 
     if (argc != 2)
     {
@@ -32,18 +32,21 @@ int main(int argc, char *argv[])
 
     while (getline(&buffer_current_line, &length, file) != -1)
     {
-        line_numbers++;
+        line_number++;
         current_opcode = strtok(buffer_current_line, " \t\n$");
         if (!current_opcode)
             continue;
-       op_code_callback = get_function_file(current_opcode);
-       if (!op_code_callback)
-       {
-            dprintf(STDERR_FILENO, "L<line_number>: unknown instruction <opcode>");
+        op_code_callback = get_function_file(current_opcode);
+        if (!op_code_callback)
+        {
+            dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n", line_number, current_opcode);
             fclose(file);
             free_list(stack);
             exit(EXIT_FAILURE);
-       }
-       op_code_callback(&stack, line_numbers);
+        }
+        op_code_callback(&stack, line_number);
     }
+    fclose(file);
+    free_list(stack);
+    return (0);
 }
