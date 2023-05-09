@@ -7,7 +7,7 @@
 * @line: number of lines.
 */
 
-void _pop(stack_t **stack, unsigned int line)
+void _pop(stack_t __attribute__((unused)) **stack, unsigned int __attribute__((unused)) line)
 {
     printf("Entro _pop");
 }
@@ -19,7 +19,7 @@ void _pop(stack_t **stack, unsigned int line)
 * @line: number of lines.
 */
 
-void _swap(stack_t **stack, unsigned int line)
+void _swap(stack_t __attribute__((unused)) **stack, unsigned int __attribute__((unused)) line)
 {
     printf("Entro _swap");
 }
@@ -31,7 +31,7 @@ void _swap(stack_t **stack, unsigned int line)
 * @line: number of lines.
 */
 
-void _add(stack_t **stack, unsigned int line)
+void _add(stack_t __attribute__((unused)) **stack, unsigned int __attribute__((unused)) line)
 {
     printf("Entro _add");
 }
@@ -44,7 +44,7 @@ void _add(stack_t **stack, unsigned int line)
 */
 
 void
-_nop(stack_t **stack, unsigned int line)
+_nop(stack_t __attribute__((unused)) **stack, unsigned int __attribute__((unused)) line)
 {
     printf("Entro _nop");
 }

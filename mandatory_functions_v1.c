@@ -46,8 +46,6 @@ void _push(stack_t **stack, unsigned int line_number)
 
 void _pall(stack_t **stack, unsigned int __attribute__((unused)) line_number)
 {
-    stack_t *temp = NULL;
-
 	if (*stack)
 	{
 		while (*stack != NULL)
@@ -66,7 +64,7 @@ void _pall(stack_t **stack, unsigned int __attribute__((unused)) line_number)
 * @line: number of lines.
 */
 
-void _pint(stack_t **stack, unsigned int line)
+void _pint(stack_t __attribute__((unused)) **stack, unsigned int __attribute__((unused)) line)
 {
     printf("Entro _pint\n");
 }
