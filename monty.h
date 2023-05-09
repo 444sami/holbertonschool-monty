@@ -10,7 +10,6 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
-
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -45,12 +44,17 @@ typedef struct instruction_s
 
 /* Functions to develop*/
 
-void _push(stack_t **stack, unsigned int line_number);
-void _pall(stack_t **stack, unsigned int line_number);
-void _pint(stack_t **stack, unsigned int line_number);
-void _pop(stack_t **stack, unsigned int line_number);
-void _swap(stack_t **stack, unsigned int line_number);
-void _add(stack_t **stack, unsigned int line_number);
-void _nop(stack_t **stack, unsigned int line_number);
+void _push(stack_t **, unsigned int);
+void _pall(stack_t **, unsigned int);
+void _pint(stack_t **, unsigned int);
+void _pop(stack_t **, unsigned int);
+void _swap(stack_t **, unsigned int);
+void _add(stack_t **, unsigned int);
+void _nop(stack_t **, unsigned int);
+
+/* Functions to develop auxiliary functions*/
+
+void (*get_function_file(char *))(stack_t **, unsigned int);
+void free_list(stack_t *);
 
 #endif
