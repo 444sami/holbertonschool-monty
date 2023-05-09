@@ -1,5 +1,17 @@
 #include "monty.h"
 
+/**
+* main - Entry point.
+*
+* @argc: Cant of params.
+* @argv: Array with content of these params.
+*
+* ! - Explain the function:
+* ! This function is the entry point of the program, here it is done the logic for to call the corresponding function.
+*   
+* Return: status.
+*/
+
 int main(int argc, char *argv[])
 {
     char *current_opcode = NULL, *buffer_current_line = NULL;
@@ -8,6 +20,7 @@ int main(int argc, char *argv[])
     ssize_t length = 0;
     unsigned int line_number = 0;
     void (*op_code_callback)(stack_t **stack, unsigned int line_numbers);
+    int status = 0;
 
     if (argc != 2)
     {
@@ -48,5 +61,5 @@ int main(int argc, char *argv[])
     }
     fclose(file);
     free_list(stack);
-    return (0);
+    return (status);
 }

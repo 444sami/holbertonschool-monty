@@ -1,6 +1,14 @@
 #include "monty.h"
 
-void (*get_function_file(char *current_opcode))(stack_t **function, unsigned int line_number)
+/**
+* get_function_file - This function do the logic for choose the corresponding function.
+*
+* @current_opcode: The tokenized opcode for the test if it matches the default opcodes.
+* @stack: reference to a stack to a function that performs an operation on the stack
+* @line_number: number of lines.
+*/
+
+void (*get_function_file(char *current_opcode))(stack_t **stack, unsigned int line_number)
 {
     int index = 0;
 
@@ -25,6 +33,11 @@ void (*get_function_file(char *current_opcode))(stack_t **function, unsigned int
     return (NULL);
 }
 
+/**
+* free_list - Free memory of doubly linked list.
+*
+* @stack_to_free: stack to free.
+*/
 
 void free_list(stack_t *stack_to_free)
 {
