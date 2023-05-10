@@ -29,11 +29,12 @@ int main(int argc, char *argv[])
 
     if (!stack)
         fprintf(stderr, "Error: malloc failed\n"), exit(EXIT_FAILURE);
-
     file = fopen(argv[1], "r");
     if (!file)
-        fprintf(stderr, "Error: Can't open file %s\n", argv[1]), free_list(stack), exit(EXIT_FAILURE);
-
+    {
+        fprintf(stderr, "Error: Can't open file %s\n", argv[1]), free_list(stack);
+        exit(EXIT_FAILURE);
+    }
     while (getline(&buffer_current_line, &length, file) != -1)
     {
         line_number++;
@@ -45,7 +46,9 @@ int main(int argc, char *argv[])
         if (!op_code_callback)
         {
             dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n", line_number, current_opcode);
-            fclose(file), free_list(stack), exit(EXIT_FAILURE);
+            fclose(file);
+            free_list(stack);
+            exit(EXIT_FAILURE);
         }
         op_code_callback(&stack, line_number);
     }
