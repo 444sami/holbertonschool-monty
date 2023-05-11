@@ -54,12 +54,15 @@ void _pall(stack_t **stack, unsigned int __attribute__((unused)) line_number)
 
 	while (tmp)
 	{
-        ((tmp->n) ? printf("%i", tmp->n) : printf("%i", 0));
+        if (tmp->n)
+			printf("%i", tmp->n);
+		else
+			printf("%i", 0);
+		
 		putchar('\n');
 		tmp = tmp->next;
 	}
 }
-
 /**
 * _pint - The opcode pint prints the value at the top of the stack, followed by a new line.
 *
