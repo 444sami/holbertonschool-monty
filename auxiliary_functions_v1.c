@@ -45,15 +45,14 @@ void free_list(stack_t *stack_to_free)
 
     while (stack_to_free != NULL)
     {
-        temp = stack_to_free;
-        stack_to_free = stack_to_free->next;
-        free(temp);
+        temp = stack_to_free->next;
+        free(stack_to_free);
+        stack_to_free = temp;
     }
 }
 
 int _isDigit(int number)
 {
-    
     if (number < 48 || number > 57)
     {
         return (0);
