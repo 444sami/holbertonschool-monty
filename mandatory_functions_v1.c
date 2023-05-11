@@ -65,10 +65,14 @@ void _pall(stack_t **stack, unsigned int __attribute__((unused)) line_number)
 * _pint - The opcode pint prints the value at the top of the stack, followed by a new line.
 *
 * @stack: stack where work will be done.
-* @line: number of lines.
+* @line_number: number of lines.
 */
 
-void _pint(stack_t __attribute__((unused)) **stack, unsigned int __attribute__((unused)) line)
+void _pint(stack_t **stack, unsigned int line_number)
 {
-    printf("Entro _pint\n");
+	if (!(*stack))
+	{
+		fprintf(stderr,"L%u: can't pint, stack empty\n", line_number);
+	}
+	printf("%d\n", ((*stack)->n); /* *stack points to first value of list */
 }
