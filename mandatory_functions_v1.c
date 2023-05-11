@@ -58,6 +58,8 @@ void _pall(stack_t **stack, unsigned int __attribute__((unused)) line_number)
 		{
             if (tmp->n)
 				printf("%i\n", tmp->n);
+			else
+				printf("%i\n", 0);
 			tmp = tmp->next;
 		}
 	}
