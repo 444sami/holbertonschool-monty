@@ -7,9 +7,18 @@
 * @line: number of lines.
 */
 
-void _pop(stack_t __attribute__((unused)) **stack, unsigned int __attribute__((unused)) line)
+void _pop(stack_t **stack, unsigned int line_number)
 {
-    printf("Entro _pop");
+	stack_t *node = NULL;
+
+	if (!stack || !(*stack))
+	{
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
+		exit(1);
+	}
+	node = *stack;
+	*stack = (*stack)->next;
+	free(node);
 }
 
 /**
