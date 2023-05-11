@@ -56,11 +56,11 @@ void _pall(stack_t **stack, unsigned int __attribute__((unused)) line_number)
 {
 	stack_t *tmp = *stack;
 
-	while (tmp)
+	while (tmp->next != NULL)
 	{
-		((tmp->n) ? printf("%i", tmp->n) : printf("%i", 0));
-		putchar('\n');
+		printf("%d\n", tmp->n);
 		tmp = tmp->next;
+		
 	}
 }
 
