@@ -43,8 +43,8 @@ void _add(stack_t __attribute__((unused)) **stack, unsigned int __attribute__((u
 * @line: number of lines.
 */
 
-void
-_nop(stack_t __attribute__((unused)) **stack, unsigned int __attribute__((unused)) line)
+void _nop(stack_t **stack, unsigned int line_number)
 {
-    printf("Entro _nop");
+    (void)stack;
+    (void)line_number;
 }
