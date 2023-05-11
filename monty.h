@@ -47,7 +47,7 @@ typedef struct instruction_s
 void _push(stack_t **, unsigned int);
 void _pall(stack_t **, unsigned int);
 void _pint(stack_t **stack, unsigned int line_number);
-void _pop(stack_t **, unsigned int);
+void _pop(stack_t **stack, unsigned int line_number);
 void _swap(stack_t **, unsigned int);
 void _add(stack_t **, unsigned int);
 void _nop(stack_t **stack, unsigned int line_number);
