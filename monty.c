@@ -14,31 +14,33 @@
 
 int main(int argc, char *argv[])
 {
-    char *current_opcode = NULL, *buffer_current_line = NULL;
+    char *current_opcode = NULL;
     stack_t *stack = NULL;
     FILE *file;
-    size_t length;
     int line_number = 0;
     void (*op_code_callback)(stack_t **stack, unsigned int line_numbers);
     int status = 0;
 
     if (argc != 2)
         fprintf(stderr, "USAGE: monty file\n"), exit(EXIT_FAILURE);
-    
-    stack = malloc(sizeof(stack_t));
 
+    stack = malloc(sizeof(stack_t));
     if (!stack)
         fprintf(stderr, "Error: malloc failed\n"), exit(EXIT_FAILURE);
+
     file = fopen(argv[1], "r");
     if (!file)
     {
-        fprintf(stderr, "Error: Can't open file %s\n", argv[1]), free_list(stack);
+        fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+        free(stack);
         exit(EXIT_FAILURE);
     }
-    while (getline(&buffer_current_line, &length, file) != -1)
+
+    char buffer_current_line[4000];  // Nueva variable para almacenar cada línea
+
+    while (fgets(buffer_current_line, sizeof(buffer_current_line), file))
     {
         line_number++;
-        // ! Obtengo la palabra - push - Solo en este caso, al llamar a su funcion, se obtiene el numero que le sigue (agregado a la pila).
         current_opcode = strtok(buffer_current_line, " \t\n$");
         if (!current_opcode)
             continue;
@@ -51,9 +53,10 @@ int main(int argc, char *argv[])
             exit(EXIT_FAILURE);
         }
         op_code_callback(&stack, line_number);
-        free(buffer_current_line);
     }
+
     fclose(file);
     free_list(stack);
-    return (status);
+    return status;
 }
+

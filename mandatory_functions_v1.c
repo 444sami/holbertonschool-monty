@@ -12,10 +12,10 @@ void _push(stack_t **stack, unsigned int line_number)
     stack_t *newNode = NULL;
     char *token_number = NULL;
 	int i = 0;
-    // ! Numero para agregar a la pila.
-    token_number = strtok(NULL, " \t\n$");
 
-	if (token_number[0] == '-')
+    // ! Numero para agregar a la pila.
+    token_number = strtok(NULL, "\t\n$");
+    if (token_number[0] == '-')
 		i++;
 	for (; token_number[i]; i++)
 	{
@@ -33,6 +33,7 @@ void _push(stack_t **stack, unsigned int line_number)
 		free_list(*stack);
 		exit(EXIT_FAILURE);
 	}
+
     // ! Conectamos el nuevo nodo al stack (head) este mismo se lo asignamos al newNode para que sea el primer elmento en la pila.
     newNode->n = atoi(token_number);
 	newNode->next = *stack;
