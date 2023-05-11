@@ -30,7 +30,7 @@ void _pop(stack_t **stack, unsigned int line_number)
 
 void _swap(stack_t __attribute__((unused)) **stack, unsigned int __attribute__((unused)) line)
 {
-	printf("Entro _swap");
+
 }
 
 /**
@@ -40,9 +40,19 @@ void _swap(stack_t __attribute__((unused)) **stack, unsigned int __attribute__((
 * @line: number of lines.
 */
 
-void _add(stack_t __attribute__((unused)) **stack, unsigned int __attribute__((unused)) line)
+void _add(stack_t **stack, unsigned int line)
 {
-	printf("Entro _add");
+	stack_t *check = (*stack)->next;
+	if (check->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't add, stack too short\n", line);
+		exit(EXIT_FAILURE);
+	}
+	int tmp = (*stack)->n;
+	*stack = (*stack)->next;
+	(*stack)->n += tmp;
+	free((*stack)->prev);
+	(*stack)->prev = NULL;
 }
 
 /**
