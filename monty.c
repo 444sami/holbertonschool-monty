@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     stack_t *stack = NULL;
     FILE *file;
     size_t length;
-    unsigned int line_number = 0;
+    int line_number = 0;
     void (*op_code_callback)(stack_t **stack, unsigned int line_numbers);
     int status = 0;
 
