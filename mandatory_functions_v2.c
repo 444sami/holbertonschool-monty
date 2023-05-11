@@ -4,7 +4,7 @@
 * _pop - The opcode pop removes the top element of the stack.
 *
 * @stack: stack where work will be done.
-* @line: number of lines.
+* @line_number: number of lines.
 */
 
 void _pop(stack_t **stack, unsigned int line_number)
@@ -30,7 +30,7 @@ void _pop(stack_t **stack, unsigned int line_number)
 
 void _swap(stack_t __attribute__((unused)) **stack, unsigned int __attribute__((unused)) line)
 {
-    printf("Entro _swap");
+	printf("Entro _swap");
 }
 
 /**
@@ -42,18 +42,18 @@ void _swap(stack_t __attribute__((unused)) **stack, unsigned int __attribute__((
 
 void _add(stack_t __attribute__((unused)) **stack, unsigned int __attribute__((unused)) line)
 {
-    printf("Entro _add");
+	printf("Entro _add");
 }
 
 /**
 * _nop - The opcode nop doesn’t do anything.
 *
 * @stack: stack where work will be done.
-* @line: number of lines.
+* @line_number: number of lines.
 */
 
 void _nop(stack_t **stack, unsigned int line_number)
 {
-    (void)stack;
-    (void)line_number;
+	(void)stack;
+	(void)line_number;
 }

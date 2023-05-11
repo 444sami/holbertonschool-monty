@@ -1,36 +1,39 @@
 #include "monty.h"
 
 /**
-* get_function_file - This function do the logic for choose the corresponding function.
+* get_function_file - This function do the logic for choose the
+* corresponding function.
 *
-* @current_opcode: The tokenized opcode for the test if it matches the default opcodes.
-* @stack: reference to a stack to a function that performs an operation on the stack
+* @current_opcode: The tokenized opcode for the test if
+* it matches the default opcodes.
+* @stack: reference to a stack to a function that
+* performs an operation on the stack
 * @line_number: number of lines.
 */
 
 void (*get_function_file(char *current_opcode))(stack_t **stack, unsigned int line_number)
 {
-    int index = 0;
+	int index = 0;
 
-    instruction_t struct_rules[] = {
-        { "push", _push },
-        { "pall", _pall },
-        { "pint", _pint },
-        { "pop",  _pop },
-        { "swap", _swap },
-        { "add",  _add },
-        { "nop",  _nop },
-        { NULL, NULL }
-    };
+	instruction_t struct_rules[] = {
+		{ "push", _push },
+		{ "pall", _pall },
+		{ "pint", _pint },
+		{ "pop",  _pop },
+		{ "swap", _swap },
+		{ "add",  _add },
+		{ "nop",  _nop },
+		{ NULL, NULL }
+	};
 
-    for (; struct_rules[index].opcode; index++)
-    {
-        if (strcmp(struct_rules[index].opcode, current_opcode) == 0)
-        {
-            return (struct_rules[index].f);
-        }
-    }
-    return (NULL);
+	for (; struct_rules[index].opcode; index++)
+	{
+		if (strcmp(struct_rules[index].opcode, current_opcode) == 0)
+		{
+			return (struct_rules[index].f);
+		}
+	}
+	return (NULL);
 }
 
 /**
@@ -41,22 +44,24 @@ void (*get_function_file(char *current_opcode))(stack_t **stack, unsigned int li
 
 void free_list(stack_t *stack_to_free)
 {
-    stack_t *temp;
+	stack_t *temp;
 
-    while (stack_to_free != NULL)
-    {
-        temp = stack_to_free->next;
-        free(stack_to_free);
-        stack_to_free = temp;
-    }
+	while (stack_to_free != NULL)
+	{
+		temp = stack_to_free->next;
+		free(stack_to_free);
+		stack_to_free = temp;
+	}
 }
 
 int
 is_number(char *number)
 {
-    // ! 1 - Valid.
-    // ! 0 - Invalid.
-    
+	/**
+	* ! 1 - Valid.
+	* ! 0 - Invalid.
+	*/
+
 	int index = 0;
 
 	if ((number[index] < '0' || number[index] > '9') && number[index] != '-')
@@ -64,14 +69,14 @@ is_number(char *number)
 		return (0);
 	}
 
-    index += 1;
+	index += 1;
 
 	for (; number[index] != '\0'; index++)
 	{
 		if ((number[index] < '0' || number[index] > '9'))
-        {
+		{
 			return (0);
-        }
+		}
 	}
 	return (1);
 }
