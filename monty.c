@@ -51,6 +51,7 @@ int main(int argc, char *argv[])
             exit(EXIT_FAILURE);
         }
         op_code_callback(&stack, line_number);
+        free(buffer_current_line);
     }
     fclose(file);
     free_list(stack);
