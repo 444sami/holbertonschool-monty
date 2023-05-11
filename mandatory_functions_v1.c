@@ -50,17 +50,13 @@ void _push(stack_t **stack, unsigned int line_number)
 
 void _pall(stack_t **stack, unsigned int __attribute__((unused)) line_number)
 {
-	stack_t *tmp = *stack;
+	stack_t *temp = *stack;
 
-	while (tmp)
+	while (temp != NULL)
 	{
-        if (tmp->n)
-			printf("%i", tmp->n);
-		else
-			printf("%i", 0);
-		
-		putchar('\n');
-		tmp = tmp->next;
+		if (temp->n)
+			printf("%i\n", temp->n);
+		temp = temp->next;
 	}
 }
 /**
