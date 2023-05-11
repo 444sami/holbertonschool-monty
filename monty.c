@@ -54,7 +54,6 @@ int main(int argc, char *argv[])
     }
     fclose(file);
     free_list(stack);
-    printf("%i\n", 0);
     return (status);
 }
 
