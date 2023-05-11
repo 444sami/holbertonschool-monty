@@ -60,7 +60,6 @@ void _pall(stack_t **stack, unsigned int __attribute__((unused)) line_number)
 	{
 		printf("%d\n", tmp->n);
 		tmp = tmp->next;
-		
 	}
 }
 
@@ -75,9 +74,10 @@ void _pall(stack_t **stack, unsigned int __attribute__((unused)) line_number)
 
 void _pint(stack_t **stack, unsigned int line_number)
 {
-	if (!(*stack))
+	if ((*stack)->next == NULL && (*stack)->prev == NULL)
 	{
 		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", ((*stack)->n)); /* *stack points to first value of list */
 }

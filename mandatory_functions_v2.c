@@ -11,10 +11,10 @@ void _pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *node = NULL;
 
-	if ((*stack) == NULL)
+	if ((*stack)->next == NULL && (*stack)->prev == NULL)
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 	node = *stack;
 	*stack = (*stack)->next;
