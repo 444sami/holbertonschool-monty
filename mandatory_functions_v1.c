@@ -11,20 +11,14 @@ void _push(stack_t **stack, unsigned int line_number)
 {
     stack_t *newNode = NULL;
     char *token_number = NULL;
-	int i = 0;
 
     // ! Numero para agregar a la pila.
-    token_number = strtok(NULL, "\t\n$");
-    if (token_number[0] == '-')
-		i++;
-	for (; token_number[i]; i++)
+    token_number = strtok(NULL, " \t\n$");
+    if (!token_number || is_number(token_number) == 0)
 	{
-		if (_isDigit(token_number[i]) == 0)
-		{
-			fprintf(stderr, "L%d: usage: push integer\n", line_number);
-        	free_list(*stack);
-        	exit(EXIT_FAILURE);
-		}
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		free_list(*stack);
+		exit(EXIT_FAILURE);
 	}
     newNode = malloc(sizeof(stack_t));
 	if (!newNode)

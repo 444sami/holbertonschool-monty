@@ -51,11 +51,27 @@ void free_list(stack_t *stack_to_free)
     }
 }
 
-int _isDigit(int number)
+int
+is_number(char *number)
 {
-    if (number < 48 || number > 57)
-    {
-        return (0);
-    }
-    return (1);
+    // ! 1 - Valid.
+    // ! 0 - Invalid.
+    
+	int index = 0;
+
+	if ((number[index] < '0' || number[index] > '9') && number[index] != '-')
+	{
+		return (0);
+	}
+
+    index += 1;
+
+	for (; number[index] != '\0'; index++)
+	{
+		if ((number[index] < '0' || number[index] > '9'))
+        {
+			return (0);
+        }
+	}
+	return (1);
 }

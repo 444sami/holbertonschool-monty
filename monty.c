@@ -41,6 +41,7 @@ int main(int argc, char *argv[])
     while (fgets(buffer_current_line, sizeof(buffer_current_line), file))
     {
         line_number++;
+        // Eliminar espacios en blanco adicionales al comienzo de la línea
         current_opcode = strtok(buffer_current_line, " \t\n$");
         if (!current_opcode)
             continue;
@@ -54,7 +55,6 @@ int main(int argc, char *argv[])
         }
         op_code_callback(&stack, line_number);
     }
-
     fclose(file);
     free_list(stack);
     return status;
