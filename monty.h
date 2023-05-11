@@ -56,5 +56,6 @@ void _nop(stack_t **, unsigned int);
 
 void (*get_function_file(char *))(stack_t **, unsigned int);
 void free_list(stack_t *);
+int _isDigit(int number);
 
 #endif

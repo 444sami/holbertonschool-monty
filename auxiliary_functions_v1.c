@@ -50,3 +50,13 @@ void free_list(stack_t *stack_to_free)
         free(temp);
     }
 }
+
+int _isDigit(int number)
+{
+    
+    if (number < 48 || number > 57)
+    {
+        return (0);
+    }
+    return (1);
+}
