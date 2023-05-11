@@ -3,12 +3,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h>
+#include <ctype.h>
 
 /* Libraries for to use File I/0 */
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+
+/*Global variable*/
+FILE *file;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)

@@ -18,6 +18,7 @@ void _push(stack_t **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_list(*stack);
+		fclose(file);
 		exit(EXIT_FAILURE);
 	}
     newNode = malloc(sizeof(stack_t));
@@ -25,6 +26,7 @@ void _push(stack_t **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		free_list(*stack);
+		fclose(file);
 		exit(EXIT_FAILURE);
 	}
 

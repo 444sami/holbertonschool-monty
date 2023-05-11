@@ -16,18 +16,15 @@ int main(int argc, char *argv[])
 {
     char *current_opcode = NULL;
     stack_t *stack = NULL;
-    FILE *file;
     int line_number = 0;
     void (*op_code_callback)(stack_t **stack, unsigned int line_numbers);
     int status = 0;
 
     if (argc != 2)
         fprintf(stderr, "USAGE: monty file\n"), exit(EXIT_FAILURE);
-
     stack = malloc(sizeof(stack_t));
     if (!stack)
         fprintf(stderr, "Error: malloc failed\n"), exit(EXIT_FAILURE);
-
     file = fopen(argv[1], "r");
     if (!file)
     {
@@ -41,14 +38,13 @@ int main(int argc, char *argv[])
     while (fgets(buffer_current_line, sizeof(buffer_current_line), file))
     {
         line_number++;
-        // Eliminar espacios en blanco adicionales al comienzo de la línea
         current_opcode = strtok(buffer_current_line, " \t\n$");
         if (!current_opcode)
             continue;
         op_code_callback = get_function_file(current_opcode);
         if (!op_code_callback)
         {
-            dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n", line_number, current_opcode);
+            fprintf(stderr, "L%u: unknown instruction %s\n", line_number, current_opcode);
             fclose(file);
             free_list(stack);
             exit(EXIT_FAILURE);
@@ -57,6 +53,6 @@ int main(int argc, char *argv[])
     }
     fclose(file);
     free_list(stack);
-    return status;
+    return (status);
 }
 
