@@ -78,5 +78,5 @@ void _pint(stack_t **stack, unsigned int line_number)
 	{
 		fprintf(stderr,"L%u: can't pint, stack empty\n", line_number);
 	}
-	printf("%d\n", ((*stack)->n); /* *stack points to first value of list */
+	printf("%d\n", ((*stack)->n)); /* *stack points to first value of list */
 }
