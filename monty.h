@@ -58,7 +58,7 @@ void _nop(stack_t **stack, unsigned int line_number);
 
 /* Functions to develop auxiliary functions*/
 
-void (*get_function_file(char *))(stack_t **, unsigned int);
+void (*get_fu(char *))(stack_t **, unsigned int);
 void free_list(stack_t *);
 int is_number(char *);
 

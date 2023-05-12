@@ -33,8 +33,7 @@ int main(int argc, char *argv[])
 		free(stack);
 		exit(EXIT_FAILURE);
 	}
-
-	char buffer_current_line[4000];  /* Nueva variable para almacenar cada línea */
+	char buffer_current_line[4000];  /*Nueva variable para almacenar cada línea*/
 
 	while (fgets(buffer_current_line, sizeof(buffer_current_line), file))
 	{
@@ -42,10 +41,11 @@ int main(int argc, char *argv[])
 		current_opcode = strtok(buffer_current_line, " \t\n$");
 		if (!current_opcode)
 			continue;
-		op_code_callback = get_function_file(current_opcode);
+		op_code_callback = get_fu(current_opcode);
 		if (!op_code_callback)
 		{
-			fprintf(stderr, "L%u: unknown instruction %s\n", line_number, current_opcode);
+			fprintf(stderr, "L%u: unknown instruction %s\n", line_number,
+			current_opcode);
 			fclose(file);
 			free_list(stack);
 			exit(EXIT_FAILURE);

@@ -1,17 +1,16 @@
 #include "monty.h"
 
 /**
-* get_function_file - This function do the logic for choose the
+* get_fu - This function do the logic for choose the
 * corresponding function.
 *
 * @current_opcode: The tokenized opcode for the test if
 * it matches the default opcodes.
-* @stack: reference to a stack to a function that
-* performs an operation on the stack
-* @line_number: number of lines.
+*
+* Return: The corresponding function
 */
 
-void (*get_function_file(char *current_opcode))(stack_t **stack, unsigned int line_number)
+void (*get_fu(char *current_opcode))(stack_t **stack, unsigned int line_number)
 {
 	int index = 0;
 

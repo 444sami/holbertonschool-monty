@@ -31,6 +31,7 @@ void _pop(stack_t **stack, unsigned int line_number)
 void _swap(stack_t **stack, unsigned int line)
 {
 	stack_t *check = (*stack)->next;
+
 	if (check->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't swap, stack too short\n", line);
@@ -52,6 +53,7 @@ void _swap(stack_t **stack, unsigned int line)
 void _add(stack_t **stack, unsigned int line)
 {
 	stack_t *check = (*stack)->next;
+
 	if (check->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't add, stack too short\n", line);
